@@ -13,7 +13,7 @@ public class Photos {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Users users;
 

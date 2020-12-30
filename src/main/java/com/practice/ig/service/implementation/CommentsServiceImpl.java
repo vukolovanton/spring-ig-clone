@@ -1,5 +1,7 @@
 package com.practice.ig.service.implementation;
 
+import com.practice.ig.entity.Comments;
+import com.practice.ig.repository.interfaces.CommentsRepository;
 import com.practice.ig.service.interfaces.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
