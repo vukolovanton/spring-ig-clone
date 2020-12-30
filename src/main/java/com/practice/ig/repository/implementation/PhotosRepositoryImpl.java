@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -38,5 +39,14 @@ public class PhotosRepositoryImpl implements PhotosRepository {
         Session session = entityManager.unwrap(Session.class);
         session.persist(photo);
 //        session.saveOrUpdate(photo);
+    }
+
+    @Override
+    public List<Photos> getOldestPhotos(Timestamp time) {
+        Session session = entityManager.unwrap(Session.class);
+        Query query = session.createQuery("FROM Photos P WHERE P.createdAt < :time");
+        query.setParameter("time", time);
+        List<Photos> result = query.getResultList();
+        return result;
     }
 }

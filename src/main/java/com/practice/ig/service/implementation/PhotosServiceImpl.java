@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -36,5 +37,10 @@ public class PhotosServiceImpl implements PhotosService {
     @Transactional
     public void savePhoto(Photos photo) {
         photosRepository.savePhoto(photo);
+    }
+
+    @Override
+    public List<Photos> getOldestPhotos(Timestamp time) {
+        return photosRepository.getOldestPhotos(time);
     }
 }

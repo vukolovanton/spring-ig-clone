@@ -18,15 +18,9 @@ public class Comments {
     @Column(name = "created_at")
     private Date createdAt;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "photo_id")
-//    private Photos photo;
-//
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id")
-//    private Users user;
-
-    // <--GETTERS AND SETTERS-->
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "photo_id")
+    private Photos photo;
 
     public Comments() {
     }
@@ -60,19 +54,11 @@ public class Comments {
         this.createdAt = createdAt;
     }
 
-//    public Photos getPhoto() {
-//        return photo;
-//    }
-//
-//    public void setPhoto(Photos photo) {
-//        this.photo = photo;
-//    }
-//
-//    public Users getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(Users user) {
-//        this.user = user;
-//    }
+    public Photos getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photos photo) {
+        this.photo = photo;
+    }
 }

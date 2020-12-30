@@ -5,6 +5,8 @@ import com.practice.ig.service.interfaces.PhotosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,6 +34,13 @@ public class PhotosController {
         System.out.println(photo.toString());
         photosService.savePhoto(photo);
         return photo;
+    }
+
+    @GetMapping("/photos/oldest/{time}")
+    public List<Photos> getOldestPhotos(@PathVariable Long time) {
+        Timestamp timestamp = new Timestamp(time);
+        List<Photos> photos = photosService.getOldestPhotos(timestamp);
+        return photos;
     }
 
 

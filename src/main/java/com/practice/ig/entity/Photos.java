@@ -1,6 +1,8 @@
 package com.practice.ig.entity;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -13,12 +15,12 @@ public class Photos {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private Users users;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private Timestamp createdAt;
 
     public Photos(String imageUrl) {
         this.imageUrl = imageUrl;
@@ -55,7 +57,7 @@ public class Photos {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
