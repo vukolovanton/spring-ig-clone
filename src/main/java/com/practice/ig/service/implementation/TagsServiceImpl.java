@@ -29,4 +29,9 @@ public class TagsServiceImpl implements TagsService {
     public Tags findTagById(int id) {
         return tagsRepository.findTagById(id);
     }
+
+    @Override
+    public List<Tags> paginatedTagsList(int cursor, int limit) {
+        return tagsRepository.paginatedTagsList(cursor, limit);
+    }
 }

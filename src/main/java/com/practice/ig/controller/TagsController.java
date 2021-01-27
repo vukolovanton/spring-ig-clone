@@ -3,10 +3,7 @@ package com.practice.ig.controller;
 import com.practice.ig.entity.Tags;
 import com.practice.ig.service.interfaces.TagsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,10 @@ public class TagsController {
     @GetMapping("/tags/{tagId}")
     public Tags findTagById(@PathVariable int tagId) {
         return tagsService.findTagById(tagId);
+    }
+
+    @GetMapping("tags/pagination")
+    public @ResponseBody List<Tags> getPaginatedTagsList(@RequestParam("cursor") int cursor, @RequestParam("limit") int limit) {
+        return tagsService.paginatedTagsList(cursor, limit);
     }
 }

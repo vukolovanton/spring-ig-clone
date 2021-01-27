@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -31,5 +32,14 @@ public class TagsRepositoryImpl implements TagsRepository {
         Session session = entityManager.unwrap(Session.class);
         Tags tag = session.get(Tags.class, id);
         return tag;
+    }
+
+    @Override
+    public List<Tags> paginatedTagsList(int cursor, int limit) {
+        TypedQuery<Tags> query = entityManager.createQuery("from Tags", Tags.class);
+        query.setFirstResult(cursor);
+        query.setMaxResults(limit);
+        List<Tags> tags = query.getResultList();
+        return tags;
     }
 }

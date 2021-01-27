@@ -7,4 +7,5 @@ import java.util.List;
 public interface TagsService {
     public List<Tags> findAll();
     public Tags findTagById(int id);
+    public List<Tags> paginatedTagsList(int cursor, int limit);
 }
