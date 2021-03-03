@@ -1,2 +1,2 @@
 # spring-ig-clone
-Playgound I've made with educational purposes. Monolith Spring application with Hibernate and Lombok.
+Sandbox I've been working on for personal education purposes. Monolith Spring application with Hibernate and Lombok.
